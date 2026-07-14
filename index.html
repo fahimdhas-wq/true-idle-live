@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>True IDLE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#07090f">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
+  <script type="module" crossorigin src="/true-idle-live/assets/index-Btl4JWQF.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-BmUjE9cA.css">
+</head>
+<body>
+  <div id="loading-overlay">
+    <div class="loading-content">
+      <div class="ds-title" style="margin-top:0;font-size:1.6em;">True IDLE</div>
+      <div style="font-family:'Aldrich',monospace;font-size:0.7em;color:var(--text-dim);letter-spacing:4px;margin-bottom:24px;">LOADING</div>
+      <div class="loader"></div>
+      <div style="font-family:'Orbitron',sans-serif;font-size:0.65em;color:var(--accent);letter-spacing:2px;margin-top:20px;">Calculating Offline Progress...</div>
+    </div>
+  </div>
+
+  <div id="toast-container" style="position:fixed;bottom:12px;left:50%;transform:translateX(-50%);z-index:9000;width:92vw;max-width:420px;display:flex;flex-direction:column;gap:6px;pointer-events:none;"></div>
+
+  <div class="container">
+    <header>
+      <h1 onclick="if(window.game)game.secretClick()">True IDLE</h1>
+      <div class="header-row">
+        <span class="status-badge" id="game-status">⚔️ F1</span>
+        <span class="status-badge floor-badge" id="display-floor">1</span>
+        <span class="rank-badge" id="rank-badge" style="display:none;">⭐ RANK 0</span>
+        <button class="btn-reset" onclick="if(window.UI)UI.switchTab('promotions')" style="color:var(--gold);border-color:hsla(51,100%,50%,0.3);">Promote</button>
+        <button class="btn-reset" onclick="if(window.UI)UI.confirmReset()">Reset</button>
+      </div>
+      <button id="menu-toggle" onclick="if(window.UI)UI.toggleMenu()">☰</button>
+    </header>
+    <div id="mobile-sub-nav" class="mobile-sub-nav"></div>
+    <nav id="main-nav">
+      <button onclick="UI.switchTab('main')" id="btn-main" class="active">Combat</button>
+      <button onclick="UI.switchTab('stats')" id="btn-stats">Stats</button>
+      <button onclick="UI.switchTab('enchant')" id="btn-enchant">Enchant</button>
+      <button onclick="UI.switchTab('farming')" id="btn-farming">Farming</button>
+      <button onclick="UI.switchTab('mining')" id="btn-mining">Mining</button>
+      <button onclick="UI.switchTab('herblore')" id="btn-herblore">Herblore</button>
+      <button onclick="UI.switchTab('inventory')" id="btn-inventory">Inventory</button>
+      <button onclick="UI.switchTab('bestiary')" id="btn-bestiary">Bestiary</button>
+      <button onclick="UI.switchTab('slayer')" id="btn-slayer">Slayer</button>
+      <button onclick="UI.switchTab('beasts')" id="btn-beasts">Beasts</button>
+      <button onclick="UI.switchTab('necromancy')" id="btn-necromancy">Necromancy</button>
+      <button onclick="UI.switchTab('professions')" id="btn-professions">Professions</button>
+      <button onclick="UI.switchTab('sanctified')" id="btn-sanctified">Sanctified</button>
+      <button onclick="UI.switchTab('promotions')" id="btn-promotions">Promotions</button>
+      <button onclick="UI.switchTab('achievements')" id="btn-achievements">Achievements</button>
+      <button onclick="UI.switchTab('settings')" id="btn-settings">Settings</button>
+    </nav>
+
+    <!-- ═══ COMBAT ═══ -->
+    <div id="tab-main" class="panel active">
+      <div class="panel-header">
+        <span class="panel-icon">⚔️</span>
+        <span class="panel-title">Combat</span>
+        <span class="panel-level" id="combat-header-info">LVL 1 · Floor 1</span>
+      </div>
+      <div class="hardened-bar-container" style="margin:6px 0;padding:8px 10px;border:1px solid var(--border);background:var(--surface);">
+        <div class="stat-row" style="margin:0 0 4px;border:none;background:transparent;padding:0;">
+          <span style="font-size:0.75em;color:var(--text-dim);">Hardened Scale</span>
+          <span id="damage-accumulator-text" style="font-size:0.75em;color:var(--hp-red);">0 / 100</span>
+        </div>
+        <div class="bar-container" style="height:6px;">
+          <div id="damage-accumulator-bar" class="progress-bar-fill fill-secondary" style="width:0%;background:var(--mana-blue);"></div>
+        </div>
+      </div>
+      <div class="floor-controls">
+        <div class="floor-control-label">Target Floor</div>
+        <div class="floor-select" id="floor-select">
+          <button class="floor-select-trigger" id="floor-select-trigger" type="button" onclick="if(window.UI)UI.toggleFloorSelect()">
+            <span id="floor-select-value">F1</span>
+            <span class="floor-select-arrow" id="floor-select-arrow">&#9662;</span>
+          </button>
+          <div class="floor-select-panel" id="floor-select-panel">
+            <input class="floor-select-search" id="floor-select-search" type="text" inputmode="numeric" placeholder="Search floor #" oninput="if(window.UI)UI.filterFloorSelect(this.value)" onkeydown="if(event.key==='Enter'&&window.UI){const v=parseInt(this.value);if(v>=1&&v<=100){UI.selectFloor(v);}}">
+            <div class="floor-select-list" id="floor-select-list"></div>
+          </div>
+        </div>
+        <label class="floor-toggle">
+          <span class="floor-toggle-text">Auto</span>
+          <input type="checkbox" id="auto-advance-toggle" checked
+            onchange="if(window.game)game.toggleAutoAdvance(this.checked)">
+          <span class="floor-toggle-track">
+            <span class="floor-toggle-thumb"></span>
+          </span>
+          <span class="floor-toggle-state" id="auto-advance-state">ON</span>
+        </label>
+      </div>
+      <div id="wave-counter" class="wave-counter"></div>
+      <div class="combat-grid">
+        <div class="player-box p-box">
+          <h3>
+            <span>Player</span>
+            <span id="display-lvl">LVL 1</span>
+            <span id="active-auras" style="font-size:0.85em;display:inline-flex;gap:3px;margin-left:auto;"></span>
+          </h3>
+          <div class="bar-container hp-bar">
+            <div id="player-hp-bar" class="bar-fill fill hp-fill"></div>
+          </div>
+          <div class="stat-row" style="margin:3px 0;font-size:0.8em;border:none;background:transparent;padding:0;">
+            <span>HP</span><span><span id="display-hp">0</span> / <span id="display-max-hp">0</span></span>
+          </div>
+          <div class="bar-container hp-bar" style="margin-top:8px;border-color:var(--shield-color, #4fc3f7);">
+            <div id="player-shield-bar" class="bar-fill fill" style="background:var(--shield-color, #4fc3f7);"></div>
+          </div>
+          <div class="stat-row" style="margin:3px 0;font-size:0.8em;border:none;background:transparent;padding:0;">
+            <span>Shield</span><span><span id="display-shield">0</span> / <span id="display-max-shield">0</span></span>
+          </div>
+          <div class="bar-container hp-bar mana-bar" style="margin-top:8px;">
+            <div id="player-mana-bar" class="bar-fill fill mana-fill"></div>
+          </div>
+          <div class="stat-row" style="margin:3px 0;font-size:0.8em;border:none;background:transparent;padding:0;">
+            <span>Mana</span><span><span id="display-mana">0</span> / <span id="display-max-mana">0</span></span>
+          </div>
+          <div class="stat-row" style="margin:3px 0;font-size:0.8em;border:none;background:transparent;padding:0;">
+            <span>EXP</span><span><span id="display-exp">0</span> / <span id="display-max-exp">0</span></span>
+          </div>
+          <div class="eq-divider"></div>
+          <div class="eq-stack">
+            <div class="eq-row"><span class="eq-icon">🛡️</span><span id="p-armor-slot" class="eq-slot">—</span></div>
+            <div class="eq-row"><span class="eq-icon">⚔️</span><span id="p-weapon-slot" class="eq-slot">—</span></div>
+          </div>
+        </div>
+        <div class="enemy-box e-box">
+          <h3 id="enemy-name" style="color:var(--hp-red);">Searching...</h3>
+          <div class="bar-container hp-bar">
+            <div id="enemy-hp-bar" class="bar-fill fill hp-fill"></div>
+          </div>
+          <div class="stat-row" style="margin:3px 0;font-size:0.8em;border:none;background:transparent;padding:0;">
+            <span>HP</span><span><span id="enemy-hp">0</span> / <span id="enemy-max-hp">0</span></span>
+          </div>
+          <div class="bar-container hp-bar" style="margin-top:4px;height:8px;border-color:var(--shield-color, #4fc3f7);">
+            <div id="enemy-shield-bar" class="bar-fill fill" style="background:var(--shield-color, #4fc3f7);"></div>
+          </div>
+          <div class="stat-row" style="margin:2px 0;font-size:0.75em;border:none;background:transparent;padding:0;">
+            <span style="color:var(--shield-color, #4fc3f7);">Shield</span><span><span id="enemy-shield" style="color:var(--shield-color, #4fc3f7);">0</span></span>
+          </div>
+          <div class="stat-row" style="margin:3px 0 0;font-size:0.75em;border:none;background:transparent;padding:3px 0 0;border-top:1px solid var(--border);">
+            <span>Bonus Dmg</span><span><span id="combat-bonus-dmg" class="bonus-dmg">0%</span></span>
+          </div>
+          <div class="stat-row" style="margin:0;font-size:0.7em;border:none;background:transparent;padding:1px 0 0;">
+            <span>Grade</span><span><span id="enemy-grade" style="color:var(--text-dim);">1.00x</span></span>
+          </div>
+          <div class="eq-divider"></div>
+          <div class="eq-stack">
+            <div class="eq-row"><span class="eq-icon">🛡️</span><span id="e-armor-slot" class="eq-slot">—</span></div>
+            <div class="eq-row"><span class="eq-icon">⚔️</span><span id="e-weapon-slot" class="eq-slot">—</span></div>
+          </div>
+        </div>
+      </div>
+      <div id="combat-beasts-panel" class="combat-summon-panel">
+        <h4>Active Beasts</h4>
+        <div id="combat-beasts-list" class="summon-list"></div>
+      </div>
+      <div id="combat-skeletons-panel" class="combat-summon-panel necro-panel">
+        <h4>Undead Army</h4>
+        <div id="combat-skeletons-list" class="summon-list"></div>
+      </div>
+      <div class="logs-container-new">
+        <div class="log-tabs-header">
+          <span class="log-tab-label">Info</span>
+          <button class="log-clear-btn" onclick="if(window.UI)UI.logSystem.clear()" title="Clear log">✕</button>
+        </div>
+        <div class="log-filters">
+          <button class="log-filter-btn active" data-level="all" onclick="if(window.UI)UI.setLogFilter('all')">All</button>
+          <button class="log-filter-btn" data-level="combat" onclick="if(window.UI)UI.setLogFilter('combat')">Combat</button>
+          <button class="log-filter-btn" data-level="loot" onclick="if(window.UI)UI.setLogFilter('loot')">Loot</button>
+          <button class="log-filter-btn" data-level="system" onclick="if(window.UI)UI.setLogFilter('system')">System</button>
+        </div>
+        <div class="log-body">
+          <div id="combat-log-container" class="log-panel active">
+            <div id="combat-log" class="scroll-log"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ STATS ═══ -->
+    <div id="tab-stats" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">📊</span>
+        <span class="panel-title">Stats</span>
+        <span class="panel-level" id="stats-header-info">LVL <span id="stats-lvl-display">1</span></span>
+      </div>
+      <div class="sub-nav">
+        <button onclick="if(window.UI)UI.switchSubTabStats('total')" id="btn-stats-total" class="active">Total Stats</button>
+        <button onclick="if(window.UI)UI.switchSubTabStats('details')" id="btn-stats-details">Details</button>
+      </div>
+      <div id="stats-total" class="sub-tab-content">
+        <div id="stats-grid" class="stats-grid"></div>
+        <div id="equipped-display" style="margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05);"></div>
+      </div>
+      <div id="stats-details" class="sub-tab-content" style="display:none;">
+        <div id="stats-breakdown-list"></div>
+        <div id="achievement-stats-container">
+          <h3 style="font-family:'Orbitron',sans-serif;font-size:0.75em;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);margin:12px 0 6px;">Achievement Bonuses</h3>
+          <div id="achievement-stats-list" class="stats-grid"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ INVENTORY ═══ -->
+    <div id="tab-inventory" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">🎒</span>
+        <span class="panel-title">Inventory</span>
+        <span class="panel-level" id="inv-header-count">0 items</span>
+      </div>
+      <div style="display:flex;gap:4px;margin:6px 0;align-items:center;">
+        <button onclick="if(window.game)game.salvageAllEquip()" class="btn-outline green" style="flex:1;padding:8px;font-size:0.62em;letter-spacing:1px;">Salvage All Equip</button>
+        <button onclick="if(window.game)game.mergeAllEquipment()" class="btn-outline" style="flex:1;padding:8px;font-size:0.62em;letter-spacing:1px;">Merge All Equip</button>
+      </div>
+      <div class="inventory-filter-bar">
+        <button id="btn-filter-all" class="filter-chip active" onclick="if(window.UI)UI.switchInventoryFilter('all')">All</button>
+        <button id="btn-filter-gear" class="filter-chip" onclick="if(window.UI)UI.switchInventoryFilter('gear')">Gear</button>
+        <button id="btn-filter-potions" class="filter-chip" onclick="if(window.UI)UI.switchInventoryFilter('potions')">Potions</button>
+        <button id="btn-filter-materials" class="filter-chip" onclick="if(window.UI)UI.switchInventoryFilter('materials')">Mats</button>
+      </div>
+      <div style="margin:5px 0 10px;font-size:0.8em;color:var(--text-dim);display:flex;align-items:center;gap:8px;padding:4px;background:rgba(255,255,255,0.02);border-radius:4px;">
+        <input type="checkbox" id="auto-equip-toggle" onchange="if(window.game)game.toggleAutoEquip(this.checked)" style="cursor:pointer;width:16px;height:16px;">
+        <label for="auto-equip-toggle" style="cursor:pointer;">Auto-Equip Best Gear</label>
+        <div style="margin-left:auto;display:flex;align-items:center;gap:4px;">
+          <span>Sort:</span>
+          <select id="inv-sort-select" onchange="if(window.game)game.setSortPreference(this.value)" style="background:var(--bg2);color:var(--text-bright);border:1px solid var(--border);padding:2px;cursor:pointer;">
+            <option value="name">Name</option>
+            <option value="amount">Amount</option>
+            <option value="tier">Tier</option>
+          </select>
+        </div>
+      </div>
+      <div id="inv-suit" class="inv-section"><h3 style="color:var(--accent);margin:10px 0 5px;font-size:0.9em;letter-spacing:1px;">🛡️ Suit</h3><div class="inventory-grid" id="inv-grid-suit"></div></div>
+      <div id="inv-weapon" class="inv-section"><h3 style="color:var(--hp-red);margin:10px 0 5px;font-size:0.9em;letter-spacing:1px;">⚔️ Weapon</h3><div class="inventory-grid" id="inv-grid-weapon"></div></div>
+      <div id="inv-potions" class="inv-section"><h3 style="color:var(--neon-green);margin:10px 0 5px;font-size:0.9em;letter-spacing:1px;">⚗️ Potions</h3><div class="inventory-grid" id="inv-grid-potions"></div></div>
+      <div id="inv-herbs" class="inv-section"><h3 style="color:var(--accent);margin:10px 0 5px;font-size:0.9em;letter-spacing:1px;">🌿 Herbs</h3><div class="inventory-grid" id="inv-grid-herbs"></div></div>
+      <div id="inv-bones" class="inv-section"><h3 style="color:var(--necro-purple);margin:10px 0 5px;font-size:0.9em;letter-spacing:1px;">💀 Bones</h3><div class="inventory-grid" id="inv-grid-bones"></div></div>
+      <div id="inv-ores" class="inv-section"><h3 style="color:var(--mana-blue);margin:10px 0 5px;font-size:0.9em;letter-spacing:1px;">⛏️ Ores</h3><div class="inventory-grid" id="inv-grid-ores"></div></div>
+      <div id="inv-loots" class="inv-section"><h3 style="color:var(--gold);margin:10px 0 5px;font-size:0.9em;letter-spacing:1px;">📦 Loots</h3><div class="inventory-grid" id="inv-grid-loots"></div></div>
+      <div id="inv-other" class="inv-section"><h3 style="color:#888;margin:10px 0 5px;font-size:0.9em;letter-spacing:1px;">🔹 Other</h3><div class="inventory-grid" id="inv-grid-other"></div></div>
+    </div>
+
+    <!-- ═══ ENCHANT ═══ -->
+    <div id="tab-enchant" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">✨</span>
+        <span class="panel-title">Enchanting</span>
+        <span class="panel-level" id="enchant-header-info">LVL <span id="enchant-lvl-display">1</span></span>
+      </div>
+      <div id="enchant-slots-container"></div>
+      <div id="enchant-list" data-enchant-cat="sword"></div>
+    </div>
+
+    <!-- ═══ BESTIARY ═══ -->
+    <div id="tab-bestiary" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">📖</span>
+        <span class="panel-title">Bestiary</span>
+      </div>
+      <div class="enchant-sub-nav">
+        <button class="enchant-sub-btn active" onclick="UI.switchBestiaryTab('mobs')" id="btn-sub-mobs">👹 Mobs</button>
+        <button class="enchant-sub-btn" onclick="UI.switchBestiaryTab('bosses')" id="btn-sub-bosses">👑 Bosses</button>
+      </div>
+      <div id="view-bestiary"></div>
+    </div>
+
+    <!-- ═══ PROFESSIONS ═══ -->
+    <div id="tab-professions" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">⚒️</span>
+        <span class="panel-title">Professions</span>
+        <span class="panel-level">Overview</span>
+      </div>
+      <div id="professions-card" class="card" style="padding:10px;"></div>
+      <div id="professions-grid" class="professions-grid" style="margin-top:8px;"></div>
+    </div>
+
+    <!-- ═══ COLLECTION ═══ -->
+    <div id="tab-collection" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">📚</span>
+        <span class="panel-title">Collection</span>
+        <span class="panel-level" id="collection-header-info">Journal</span>
+      </div>
+      <div class="enchant-sub-nav" id="collection-sub-nav">
+        <button class="enchant-sub-btn active" onclick="UI.switchCollectionTab('herbs')" id="btn-col-herbs">🌿 Herbs</button>
+        <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('ores')" id="btn-col-ores">⛏ Ores</button>
+        <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('potions')" id="btn-col-potions">⚗ Potions</button>
+        <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('drops')" id="btn-col-drops">📦 Drops</button>
+        <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('beasts')" id="btn-col-beasts">🐾 Beasts</button>
+        <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('necro')" id="btn-col-necro">💀 Necro</button>
+        <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('enchants')" id="btn-col-enchants">✨ Enchants</button>
+      </div>
+      <div id="view-collection" class="collection-view active"></div>
+    </div>
+
+    <!-- ═══ FARMING ═══ -->
+    <div id="tab-farming" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">🌱</span>
+        <span class="panel-title">Farming</span>
+        <span class="panel-level" id="farming-header-info">LVL <span id="farming-lvl-display">1</span></span>
+      </div>
+      <div id="farming-plots" class="farming-grid"></div>
+    </div>
+
+    <!-- ═══ MINING ═══ -->
+    <div id="tab-mining" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">⛏️</span>
+        <span class="panel-title">Mining</span>
+        <span class="panel-level" id="mining-header-info">LVL <span id="mining-lvl-display">1</span></span>
+      </div>
+      <div id="mining-veins" class="farming-grid"></div>
+    </div>
+
+    <!-- ═══ HERBLORE ═══ -->
+    <div id="tab-herblore" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">⚗️</span>
+        <span class="panel-title">Herblore</span>
+        <span class="panel-level" id="herblore-header-info">LVL <span id="herblore-lvl-display">1</span></span>
+      </div>
+      <div id="herblore-status">Idle</div>
+      <div class="progress-bar">
+        <div id="herblore-progress-fill" class="progress-fill"></div>
+      </div>
+      <div id="herblore-list"></div>
+    </div>
+
+    <!-- ═══ SLAYER ═══ -->
+    <div id="tab-slayer" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">🗡️</span>
+        <span class="panel-title">Slayer</span>
+        <span class="panel-level" id="slayer-header-info">LVL <span id="slayer-lvl-display">1</span></span>
+      </div>
+      <div id="slayer-content"></div>
+    </div>
+
+    <!-- ═══ BEASTS ═══ -->
+    <div id="tab-beasts" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">🐾</span>
+        <span class="panel-title">Beast Taming</span>
+        <span class="panel-level" id="beasts-header-info">LVL <span id="beast-lvl-display">1</span></span>
+      </div>
+      <div id="beast-content"></div>
+    </div>
+
+    <!-- ═══ NECROMANCY ═══ -->
+    <div id="tab-necromancy" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">💀</span>
+        <span class="panel-title">Necromancy</span>
+        <span class="panel-level" id="necro-header-info">LVL <span id="necro-lvl-display">1</span></span>
+      </div>
+      <div id="necromancy-content"></div>
+    </div>
+
+    <!-- ═══ SANCTIFIED ═══ -->
+    <div id="tab-sanctified" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">🕊️</span>
+        <span class="panel-title">Sanctified Arts</span>
+        <span class="panel-level" id="sanctified-header-info">LVL <span id="sanctified-lvl-display">1</span></span>
+      </div>
+      <div id="sanctified-content"></div>
+    </div>
+
+    <!-- ═══ PROMOTIONS ═══ -->
+    <div id="tab-promotions" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">⭐</span>
+        <span class="panel-title">Promotions</span>
+        <span class="panel-level" id="promotions-header-info">Rank 0</span>
+      </div>
+      <div id="promotions-content"></div>
+    </div>
+
+    <!-- ═══ ACHIEVEMENTS ═══ -->
+    <div id="tab-achievements" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">🏆</span>
+        <span class="panel-title">Achievements</span>
+        <span class="panel-level" id="achievements-header-info">0 / 0</span>
+      </div>
+      <div id="achievements-list" class="achievement-grid"></div>
+    </div>
+
+    <!-- ═══ SETTINGS ═══ -->
+    <div id="tab-settings" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">⚙️</span>
+        <span class="panel-title">Settings</span>
+        <span class="panel-level">Save &amp; Data</span>
+      </div>
+      <div id="settings-content"></div>
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <div class="text-center" style="margin:60px 0 40px;padding:20px;border-top:1px solid var(--border);">
+      <div style="font-family:'Orbitron',monospace;font-size:0.65em;color:var(--text-dim);letter-spacing:4px;text-transform:uppercase;">True IDLE</div>
+      <div style="margin-top:8px;font-size:0.7em;color:#555;">Persistent browser RPG</div>
+      <div style="display:flex;gap:6px;justify-content:center;margin-top:12px;">
+        <button onclick="if(window.game){window.game.saveManager.save(window.game.state);window.UI.showToast('💾','Saved!','Progress persisted','green')}" class="btn-reset" style="color:var(--neon-green);border-color:hsla(110,100%,54%,0.3);">Save</button>
+        <button onclick="if(window.game)window.game.devMonth()" class="btn-reset" style="color:var(--accent);border-color:hsla(183,100%,50%,0.3);">Sim 30d</button>
+        <button onclick="if(window.UI)UI.confirmReset()" class="btn-reset" style="color:var(--hp-red);border-color:hsla(345,100%,50%,0.3);">Wipe</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <div id="mobile-bottom-nav" class="mobile-bottom-nav">
+    <button class="mobile-bottom-nav-btn active" data-category="combat" onclick="if(window.UI)UI.switchCategory('combat')">
+      <span class="nav-icon">⚔️</span><span class="nav-label">Combat</span>
+    </button>
+    <button class="mobile-bottom-nav-btn" data-category="hero" onclick="if(window.UI)UI.switchCategory('hero')">
+      <span class="nav-icon">👤</span><span class="nav-label">Hero</span>
+    </button>
+    <button class="mobile-bottom-nav-btn" data-category="skills" onclick="if(window.UI)UI.switchCategory('skills')">
+      <span class="nav-icon">⚒️</span><span class="nav-label">Skills</span>
+    </button>
+    <button class="mobile-bottom-nav-btn" data-category="arcana" onclick="if(window.UI)UI.switchCategory('arcana')">
+      <span class="nav-icon">🔮</span><span class="nav-label">Arcana</span>
+    </button>
+    <button class="mobile-bottom-nav-btn" data-category="journey" onclick="if(window.UI)UI.switchCategory('journey')">
+      <span class="nav-icon">🏆</span><span class="nav-label">Journey</span>
+    </button>
+  </div>
+
+  <div id="debug-log" style="display:none;position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,0.9);color:#ff0040;padding:10px;font-family:monospace;font-size:12px;z-index:10000;max-height:200px;overflow-y:auto;border-top:2px solid #ff0040;"></div>
+
+  <div id="popup-overlay" class="popup-overlay hidden" onclick="if(window.UI)UI.closePopup()">
+    <div id="popup-body" class="popup-body" onclick="event.stopPropagation()"></div>
+  </div>
+
+</body>
+</html>

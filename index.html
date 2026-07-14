@@ -9,8 +9,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index-DouueTgU.js"></script>
-  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-_N4Usfrq.css">
+  <script type="module" crossorigin src="/true-idle-live/assets/index-B93_3SFd.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-DHH_UdD1.css">
 </head>
 <body>
   <div id="loading-overlay">
@@ -44,7 +44,7 @@
       <button onclick="UI.switchTab('mining')" id="btn-mining">Mining</button>
       <button onclick="UI.switchTab('herblore')" id="btn-herblore">Herblore</button>
       <button onclick="UI.switchTab('inventory')" id="btn-inventory">Inventory</button>
-      <button onclick="UI.switchTab('bestiary')" id="btn-bestiary">Bestiary</button>
+
       <button onclick="UI.switchTab('slayer')" id="btn-slayer">Slayer</button>
       <button onclick="UI.switchTab('beasts')" id="btn-beasts">Beasts</button>
       <button onclick="UI.switchTab('necromancy')" id="btn-necromancy">Necromancy</button>
@@ -256,19 +256,6 @@
       <div id="enchant-list" data-enchant-cat="sword"></div>
     </div>
 
-    <!-- ═══ BESTIARY ═══ -->
-    <div id="tab-bestiary" class="panel">
-      <div class="panel-header">
-        <span class="panel-icon">📖</span>
-        <span class="panel-title">Bestiary</span>
-      </div>
-      <div class="enchant-sub-nav">
-        <button class="enchant-sub-btn active" onclick="UI.switchBestiaryTab('mobs')" id="btn-sub-mobs">👹 Mobs</button>
-        <button class="enchant-sub-btn" onclick="UI.switchBestiaryTab('bosses')" id="btn-sub-bosses">👑 Bosses</button>
-      </div>
-      <div id="view-bestiary"></div>
-    </div>
-
     <!-- ═══ PROFESSIONS ═══ -->
     <div id="tab-professions" class="panel">
       <div class="panel-header">
@@ -294,7 +281,9 @@
         <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('drops')" id="btn-col-drops">📦 Drops</button>
         <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('beasts')" id="btn-col-beasts">🐾 Beasts</button>
         <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('necro')" id="btn-col-necro">💀 Necro</button>
-        <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('enchants')" id="btn-col-enchants">✨ Enchants</button>
+          <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('enchants')" id="btn-col-enchants">✨ Enchants</button>
+          <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('mobs')" id="btn-col-mobs">👹 Mobs</button>
+          <button class="enchant-sub-btn" onclick="UI.switchCollectionTab('bosses')" id="btn-col-bosses">👑 Bosses</button>
       </div>
       <div id="view-collection" class="collection-view active"></div>
     </div>

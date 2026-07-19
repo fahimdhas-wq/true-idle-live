@@ -8,7 +8,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index-CJ7tpQ4b.js"></script>
+  <script type="module" crossorigin src="/true-idle-live/assets/index-Bh3UDsge.js"></script>
   <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-LXDu_Nvi.css">
 </head>
 <body>
@@ -85,7 +85,7 @@
         <label class="floor-toggle">
           <span class="floor-toggle-text">Auto</span>
           <input type="checkbox" id="auto-advance-toggle" checked
-            onchange="if(window.game)game.toggleAutoAdvance(this.checked)">
+            onchange="if(window.game)window.game.settingsController.toggleAutoAdvance(this.checked)">
           <span class="floor-toggle-track">
             <span class="floor-toggle-thumb"></span>
           </span>
@@ -223,11 +223,11 @@
         <button id="btn-filter-materials" class="filter-chip" onclick="if(window.UI)UI.switchInventoryFilter('materials')">Mats</button>
       </div>
       <div style="margin:5px 0 10px;font-size:0.8em;color:var(--text-dim);display:flex;align-items:center;gap:8px;padding:4px;background:rgba(255,255,255,0.02);border-radius:4px;">
-        <input type="checkbox" id="auto-equip-toggle" onchange="if(window.game)game.toggleAutoEquip(this.checked)" style="cursor:pointer;width:16px;height:16px;">
+        <input type="checkbox" id="auto-equip-toggle" onchange="if(window.game)window.game.settingsController.toggleAutoEquip(this.checked)" style="cursor:pointer;width:16px;height:16px;">
         <label for="auto-equip-toggle" style="cursor:pointer;">Auto-Equip Best Gear</label>
         <div style="margin-left:auto;display:flex;align-items:center;gap:4px;">
           <span>Sort:</span>
-          <select id="inv-sort-select" onchange="if(window.game)game.setSortPreference(this.value)" style="background:var(--bg2);color:var(--text-bright);border:1px solid var(--border);padding:2px;cursor:pointer;">
+          <select id="inv-sort-select" onchange="if(window.game)window.game.settingsController.setSortPreference(this.value)" style="background:var(--bg2);color:var(--text-bright);border:1px solid var(--border);padding:2px;cursor:pointer;">
             <option value="name">Name</option>
             <option value="amount">Amount</option>
             <option value="tier">Tier</option>
@@ -396,7 +396,7 @@
       <div style="font-family:'Orbitron',monospace;font-size:0.65em;color:var(--text-dim);letter-spacing:4px;text-transform:uppercase;">True IDLE</div>
       <div style="margin-top:8px;font-size:0.7em;color:#555;">Persistent browser RPG</div>
       <div style="display:flex;gap:6px;justify-content:center;margin-top:12px;">
-        <button onclick="if(window.game){window.game.saveManager.save(window.game.state);window.UI.showToast('💾','Saved!','Progress persisted','green')}" class="btn-reset" style="color:var(--neon-green);border-color:hsla(110,100%,54%,0.3);">Save</button>
+        <button onclick="if(window.game)window.game.saveNow()" class="btn-reset" style="color:var(--neon-green);border-color:hsla(110,100%,54%,0.3);">Save</button>
         <button onclick="if(window.game)window.game.devMonth()" class="btn-reset" style="color:var(--accent);border-color:hsla(183,100%,50%,0.3);">Sim 30d</button>
         <button onclick="if(window.UI)UI.confirmReset()" class="btn-reset" style="color:var(--hp-red);border-color:hsla(345,100%,50%,0.3);">Wipe</button>
       </div>

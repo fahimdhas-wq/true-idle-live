@@ -8,8 +8,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index-Dyn-x5np.js"></script>
-  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-By63Orp9.css">
+  <script type="module" crossorigin src="/true-idle-live/assets/index-BlKskmre.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-BMkYQXVN.css">
 </head>
 <body>
   <div id="loading-overlay">
@@ -61,10 +61,10 @@
         <span class="panel-title">Combat</span>
         <span class="panel-level" id="combat-header-info">LVL 1 · Floor 1</span>
       </div>
-      <div class="hardened-bar-container" style="margin:6px 0;padding:8px 10px;border:1px solid var(--border);background:var(--surface);">
-        <div class="stat-row" style="margin:0 0 4px;border:none;background:transparent;padding:0;">
-          <span style="font-size:0.75em;color:var(--text-dim);">Hardened Scale</span>
-          <span id="damage-accumulator-text" style="font-size:0.75em;color:var(--hp-red);">0 / 100</span>
+      <div class="hardened-bar-container">
+        <div class="section-label">
+          <span>Hardened Scale</span>
+          <span id="damage-accumulator-text">0 / 100</span>
         </div>
         <div class="bar-container" style="height:6px;">
           <div id="damage-accumulator-bar" class="progress-bar-fill fill-secondary" style="width:0%;background:var(--mana-blue);"></div>
@@ -103,22 +103,22 @@
           <div class="bar-container hp-bar">
             <div id="player-hp-bar" class="bar-fill fill hp-fill"></div>
           </div>
-          <div class="stat-row" style="margin:3px 0;font-size:0.8em;border:none;background:transparent;padding:0;">
+          <div class="combat-stat">
             <span>HP</span><span><span id="display-hp">0</span> / <span id="display-max-hp">0</span></span>
           </div>
-          <div class="bar-container hp-bar" style="margin-top:8px;border-color:var(--shield-color, #4fc3f7);">
+          <div class="bar-container hp-bar bar-gap" style="border-color:var(--shield-color, #4fc3f7);">
             <div id="player-shield-bar" class="bar-fill fill" style="background:var(--shield-color, #4fc3f7);"></div>
           </div>
-          <div class="stat-row" style="margin:3px 0;font-size:0.8em;border:none;background:transparent;padding:0;">
+          <div class="combat-stat">
             <span>Shield</span><span><span id="display-shield">0</span> / <span id="display-max-shield">0</span></span>
           </div>
-          <div class="bar-container hp-bar mana-bar" style="margin-top:8px;">
+          <div class="bar-container hp-bar mana-bar bar-gap">
             <div id="player-mana-bar" class="bar-fill fill mana-fill"></div>
           </div>
-          <div class="stat-row" style="margin:3px 0;font-size:0.8em;border:none;background:transparent;padding:0;">
+          <div class="combat-stat">
             <span>Mana</span><span><span id="display-mana">0</span> / <span id="display-max-mana">0</span></span>
           </div>
-          <div class="stat-row" style="margin:3px 0;font-size:0.8em;border:none;background:transparent;padding:0;">
+          <div class="combat-stat">
             <span>EXP</span><span><span id="display-exp">0</span> / <span id="display-max-exp">0</span></span>
           </div>
           <div class="eq-divider"></div>
@@ -128,24 +128,24 @@
           </div>
         </div>
         <div class="enemy-box e-box">
-          <h3 id="enemy-name" style="color:var(--hp-red);">Searching...</h3>
+          <h3 id="enemy-name" class="enemy-name">Searching...</h3>
           <div class="bar-container hp-bar">
             <div id="enemy-hp-bar" class="bar-fill fill hp-fill"></div>
           </div>
-          <div class="stat-row" style="margin:3px 0;font-size:0.8em;border:none;background:transparent;padding:0;">
+          <div class="combat-stat">
             <span>HP</span><span><span id="enemy-hp">0</span> / <span id="enemy-max-hp">0</span></span>
           </div>
-          <div class="bar-container hp-bar" style="margin-top:4px;height:8px;border-color:var(--shield-color, #4fc3f7);">
+          <div class="bar-container hp-bar bar-gap-sm" style="height:8px;border-color:var(--shield-color, #4fc3f7);">
             <div id="enemy-shield-bar" class="bar-fill fill" style="background:var(--shield-color, #4fc3f7);"></div>
           </div>
-          <div class="stat-row" style="margin:2px 0;font-size:0.75em;border:none;background:transparent;padding:0;">
-            <span style="color:var(--shield-color, #4fc3f7);">Shield</span><span><span id="enemy-shield" style="color:var(--shield-color, #4fc3f7);">0</span></span>
+          <div class="combat-stat combat-stat-sm">
+            <span class="shield-val">Shield</span><span><span id="enemy-shield" class="shield-val">0</span></span>
           </div>
-          <div class="stat-row" style="margin:3px 0 0;font-size:0.75em;border:none;background:transparent;padding:3px 0 0;border-top:1px solid var(--border);">
+          <div class="combat-stat combat-stat-sm" style="margin-top:3px;padding-top:3px;border-top:1px solid var(--border);">
             <span>Bonus Dmg</span><span><span id="combat-bonus-dmg" class="bonus-dmg">0%</span></span>
           </div>
-          <div class="stat-row" style="margin:0;font-size:0.7em;border:none;background:transparent;padding:1px 0 0;">
-            <span>Grade</span><span><span id="enemy-grade" style="color:var(--text-dim);">1.00x</span></span>
+          <div class="combat-stat combat-stat-xs" style="margin:0;padding:1px 0 0;">
+            <span>Grade</span><span><span id="enemy-grade" class="grade-val">1.00x</span></span>
           </div>
           <div class="eq-divider"></div>
           <div class="eq-stack">

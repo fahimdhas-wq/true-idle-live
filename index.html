@@ -8,8 +8,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index-VFlPUb34.js"></script>
-  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-BdSx59t1.css">
+  <script type="module" crossorigin src="/true-idle-live/assets/index-CwxdhE8C.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-c0OzWb4U.css">
 </head>
 <body>
   <div id="loading-overlay">
@@ -41,6 +41,7 @@
       <button data-action="switchTab:enchant" id="btn-enchant">Enchant</button>
       <button data-action="switchTab:farming" id="btn-farming">Farming</button>
       <button data-action="switchTab:mining" id="btn-mining">Mining</button>
+      <button data-action="switchTab:smithing" id="btn-smithing">Smithing</button>
       <button data-action="switchTab:herblore" id="btn-herblore">Herblore</button>
       <button data-action="switchTab:inventory" id="btn-inventory">Inventory</button>
 
@@ -242,8 +243,7 @@
           </select>
         </div>
       </div>
-      <div id="inv-suit" class="inv-section"><h3 class="inv-header-suit">🛡️ Suit</h3><div class="inventory-grid" id="inv-grid-suit"></div></div>
-      <div id="inv-weapon" class="inv-section"><h3 class="inv-header-weapon">⚔️ Weapon</h3><div class="inventory-grid" id="inv-grid-weapon"></div></div>
+      <div id="inv-equipment" class="inv-section"><h3 class="inv-header-suit">⚔️ Equipment</h3><div class="inventory-grid" id="inv-grid-equipment"></div></div>
       <div id="inv-potions" class="inv-section"><h3 class="inv-header-potions">⚗️ Potions</h3><div class="inventory-grid" id="inv-grid-potions"></div></div>
       <div id="inv-herbs" class="inv-section"><h3 class="inv-header-herbs">🌿 Herbs</h3><div class="inventory-grid" id="inv-grid-herbs"></div></div>
       <div id="inv-bones" class="inv-section"><h3 class="inv-header-bones">💀 Bones</h3><div class="inventory-grid" id="inv-grid-bones"></div></div>
@@ -289,6 +289,7 @@
         <button class="enchant-sub-btn" data-action="switchCollectionTab:beasts" id="btn-col-beasts">🐾 Beasts</button>
         <button class="enchant-sub-btn" data-action="switchCollectionTab:necro" id="btn-col-necro">💀 Necro</button>
         <button class="enchant-sub-btn" data-action="switchCollectionTab:enchants" id="btn-col-enchants">✨ Enchants</button>
+        <button class="enchant-sub-btn" data-action="switchCollectionTab:smithing" id="btn-col-smithing">🔨 Smithing</button>
         <button class="enchant-sub-btn" data-action="switchCollectionTab:mobs" id="btn-col-mobs">👹 Mobs</button>
         <button class="enchant-sub-btn" data-action="switchCollectionTab:bosses" id="btn-col-bosses">👑 Bosses</button>
       </div>
@@ -313,6 +314,16 @@
         <span class="panel-level" id="mining-header-info">LVL <span id="mining-lvl-display">1</span></span>
       </div>
       <div id="mining-veins" class="farming-grid"></div>
+    </div>
+
+    <!-- ═══ SMITHING ═══ -->
+    <div id="tab-smithing" class="panel">
+      <div class="panel-header">
+        <span class="panel-icon">🔨</span>
+        <span class="panel-title">Smithing</span>
+        <span class="panel-level" id="smithing-header-info">LVL <span id="smithing-lvl-display">1</span></span>
+      </div>
+      <div id="smithing-content"></div>
     </div>
 
     <!-- ═══ HERBLORE ═══ -->

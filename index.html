@@ -9,8 +9,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index-B12voVGc.js"></script>
-  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-k8HeVP8f.css">
+  <script type="module" crossorigin src="/true-idle-live/assets/index-D0a164Sn.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-B1_RZ7-i.css">
 </head>
 <body>
   <div id="loading-overlay">
@@ -283,16 +283,16 @@
         <span class="panel-level" id="collection-header-info">Journal</span>
       </div>
       <div class="enchant-sub-nav" id="collection-sub-nav">
-        <button class="enchant-sub-btn active" data-action="switchCollectionTab:herbs" id="btn-col-herbs">🌿 Herbs</button>
-        <button class="enchant-sub-btn" data-action="switchCollectionTab:ores" id="btn-col-ores">⛏ Ores</button>
-        <button class="enchant-sub-btn" data-action="switchCollectionTab:potions" id="btn-col-potions">⚗ Potions</button>
-        <button class="enchant-sub-btn" data-action="switchCollectionTab:drops" id="btn-col-drops">📦 Drops</button>
-        <button class="enchant-sub-btn" data-action="switchCollectionTab:beasts" id="btn-col-beasts">🐾 Beasts</button>
-        <button class="enchant-sub-btn" data-action="switchCollectionTab:necro" id="btn-col-necro">💀 Necro</button>
-        <button class="enchant-sub-btn" data-action="switchCollectionTab:enchants" id="btn-col-enchants">✨ Enchants</button>
-        <button class="enchant-sub-btn" data-action="switchCollectionTab:smithing" id="btn-col-smithing">🔨 Smithing</button>
-        <button class="enchant-sub-btn" data-action="switchCollectionTab:mobs" id="btn-col-mobs">👹 Mobs</button>
-        <button class="enchant-sub-btn" data-action="switchCollectionTab:bosses" id="btn-col-bosses">👑 Bosses</button>
+        <button class="enchant-sub-btn active" data-testid="col-cat-herbs" data-action="switchCollectionTab:herbs" id="btn-col-herbs">🌿 Herbs</button>
+        <button class="enchant-sub-btn" data-testid="col-cat-ores" data-action="switchCollectionTab:ores" id="btn-col-ores">⛏ Ores</button>
+        <button class="enchant-sub-btn" data-testid="col-cat-potions" data-action="switchCollectionTab:potions" id="btn-col-potions">⚗ Potions</button>
+        <button class="enchant-sub-btn" data-testid="col-cat-drops" data-action="switchCollectionTab:drops" id="btn-col-drops">📦 Drops</button>
+        <button class="enchant-sub-btn" data-testid="col-cat-beasts" data-action="switchCollectionTab:beasts" id="btn-col-beasts">🐾 Beasts</button>
+        <button class="enchant-sub-btn" data-testid="col-cat-necro" data-action="switchCollectionTab:necro" id="btn-col-necro">💀 Necro</button>
+        <button class="enchant-sub-btn" data-testid="col-cat-enchants" data-action="switchCollectionTab:enchants" id="btn-col-enchants">✨ Enchants</button>
+        <button class="enchant-sub-btn" data-testid="col-cat-smithing" data-action="switchCollectionTab:smithing" id="btn-col-smithing">🔨 Smithing</button>
+        <button class="enchant-sub-btn" data-testid="col-cat-mobs" data-action="switchCollectionTab:mobs" id="btn-col-mobs">👹 Mobs</button>
+        <button class="enchant-sub-btn" data-testid="col-cat-bosses" data-action="switchCollectionTab:bosses" id="btn-col-bosses">👑 Bosses</button>
       </div>
       <div id="view-collection" class="collection-view active"></div>
     </div>
@@ -422,19 +422,19 @@
 
   <!-- Mobile Bottom Navigation Bar -->
   <div id="mobile-bottom-nav" class="mobile-bottom-nav">
-    <button class="mobile-bottom-nav-btn active" data-category="combat" data-action="switchCategory:combat">
+    <button class="mobile-bottom-nav-btn active" data-testid="nav-combat" data-category="combat" data-action="switchCategory:combat">
       <span class="nav-icon">⚔️</span><span class="nav-label">Combat</span>
     </button>
-    <button class="mobile-bottom-nav-btn" data-category="hero" data-action="switchCategory:hero">
+    <button class="mobile-bottom-nav-btn" data-testid="nav-hero" data-category="hero" data-action="switchCategory:hero">
       <span class="nav-icon">👤</span><span class="nav-label">Hero</span>
     </button>
-    <button class="mobile-bottom-nav-btn" data-category="skills" data-action="switchCategory:skills">
+    <button class="mobile-bottom-nav-btn" data-testid="nav-skills" data-category="skills" data-action="switchCategory:skills">
       <span class="nav-icon">⚒️</span><span class="nav-label">Skills</span>
     </button>
-    <button class="mobile-bottom-nav-btn" data-category="arcana" data-action="switchCategory:arcana">
+    <button class="mobile-bottom-nav-btn" data-testid="nav-arcana" data-category="arcana" data-action="switchCategory:arcana">
       <span class="nav-icon">🔮</span><span class="nav-label">Arcana</span>
     </button>
-    <button class="mobile-bottom-nav-btn" data-category="journey" data-action="switchCategory:journey">
+    <button class="mobile-bottom-nav-btn" data-testid="nav-journey" data-category="journey" data-action="switchCategory:journey">
       <span class="nav-icon">🏆</span><span class="nav-label">Journey</span>
     </button>
   </div>

@@ -9,8 +9,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index-CKbXLCQD.js"></script>
-  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-DXnwmCZv.css">
+  <script type="module" crossorigin src="/true-idle-live/assets/index-dmHZjeDy.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-xpJybC20.css">
 </head>
 <body>
   <div id="loading-overlay">
@@ -444,6 +444,43 @@
   <div id="popup-overlay" class="popup-overlay hidden" data-action="closePopup">
     <div id="popup-body" class="popup-body" onclick="event.stopPropagation()"></div>
   </div>
+
+  <!-- ═══ APEX POPUP TEMPLATES (GPU-composited, zero innerHTML) ═══ -->
+  <template id="tmpl-ach-popup">
+    <div class="apex-overlay">
+      <div class="apex-starfield"></div>
+      <div class="apex-popup">
+        <div class="apex-ring"></div>
+        <div class="apex-header"><span class="apex-badge">🏆 ACHIEVEMENT UNLOCKED</span></div>
+        <div class="apex-icon-wrap">
+          <div class="apex-icon"></div>
+          <div class="apex-partcles"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="apex-name"></div>
+        <div class="apex-sub"></div>
+        <div class="apex-footer">tap to dismiss</div>
+      </div>
+    </div>
+  </template>
+
+  <template id="tmpl-promo-popup">
+    <div class="apex-overlay">
+      <div class="apex-starfield"></div>
+      <div class="apex-popup">
+        <div class="apex-ring"></div>
+        <div class="apex-header"><span class="apex-badge">⭐ PROMOTION UNLOCKED</span></div>
+        <div class="apex-icon-wrap">
+          <div class="apex-icon"></div>
+          <div class="apex-partcles"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="apex-name"></div>
+        <div class="apex-sub"></div>
+        <div class="apex-desc"></div>
+        <div class="apex-bonuses"></div>
+        <div class="apex-footer">tap to dismiss</div>
+      </div>
+    </div>
+  </template>
 
 </body>
 </html>

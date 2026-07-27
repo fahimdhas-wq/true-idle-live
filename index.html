@@ -9,8 +9,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index-Cc5PH-Ll.js"></script>
-  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-pJ_WrGsy.css">
+  <script type="module" crossorigin src="/true-idle-live/assets/index-C_uPlEEl.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-CU5BPlAy.css">
 </head>
 <body>
   <div id="loading-overlay">
@@ -101,57 +101,54 @@
             <span id="display-lvl">LVL 1</span>
             <span id="active-auras" class="active-auras-inline"></span>
           </h3>
-          <div class="bar-container hp-bar">
-            <div id="player-hp-bar" class="bar-fill fill hp-fill"></div>
+          <div class="stats-body">
+            <div class="bar-container hp-bar">
+              <div id="player-hp-bar" class="bar-fill fill hp-fill"></div>
+            </div>
+            <div class="combat-stat">
+              <span>HP</span><span><span id="display-hp">0</span> / <span id="display-max-hp">0</span></span>
+            </div>
+            <div class="bar-container hp-bar bar-gap bar-shield">
+              <div id="player-shield-bar" class="bar-fill fill bar-shield-fill"></div>
+            </div>
+            <div class="combat-stat">
+              <span>Shield</span><span><span id="display-shield">0</span> / <span id="display-max-shield">0</span></span>
+            </div>
+            <div class="bar-container hp-bar mana-bar bar-gap">
+              <div id="player-mana-bar" class="bar-fill fill mana-fill"></div>
+            </div>
+            <div class="combat-stat">
+              <span>Mana</span><span><span id="display-mana">0</span> / <span id="display-max-mana">0</span></span>
+            </div>
+            <div class="bar-container xp-bar bar-gap">
+              <div id="player-xp-bar" class="bar-fill fill xp-fill"></div>
+            </div>
+            <div class="combat-stat">
+              <span>EXP</span><span><span id="display-exp">0</span> / <span id="display-max-exp">0</span></span>
+            </div>
           </div>
-          <div class="combat-stat">
-            <span>HP</span><span><span id="display-hp">0</span> / <span id="display-max-hp">0</span></span>
-          </div>
-          <div class="bar-container hp-bar bar-gap bar-shield">
-            <div id="player-shield-bar" class="bar-fill fill bar-shield-fill"></div>
-          </div>
-          <div class="combat-stat">
-            <span>Shield</span><span><span id="display-shield">0</span> / <span id="display-max-shield">0</span></span>
-          </div>
-          <div class="bar-container hp-bar mana-bar bar-gap">
-            <div id="player-mana-bar" class="bar-fill fill mana-fill"></div>
-          </div>
-          <div class="combat-stat">
-            <span>Mana</span><span><span id="display-mana">0</span> / <span id="display-max-mana">0</span></span>
-          </div>
-          <div class="bar-container xp-bar bar-gap">
-            <div id="player-xp-bar" class="bar-fill fill xp-fill"></div>
-          </div>
-          <div class="combat-stat">
-            <span>EXP</span><span><span id="display-exp">0</span> / <span id="display-max-exp">0</span></span>
-          </div>
-        </div>
-        <div class="enemy-box e-box">
-          <h3 id="enemy-name" class="enemy-name">Searching... <span id="enemy-tag" class="enemy-tag"></span></h3>
-          <div class="bar-container hp-bar">
-            <div id="enemy-hp-bar" class="bar-fill fill hp-fill"></div>
-          </div>
-          <div class="combat-stat">
-            <span>HP</span><span><span id="enemy-hp">0</span> / <span id="enemy-max-hp">0</span></span>
-          </div>
-          <div class="bar-container hp-bar bar-gap bar-shield">
-            <div id="enemy-shield-bar" class="bar-fill fill bar-shield-fill"></div>
-          </div>
-          <div class="combat-stat">
-            <span class="shield-val">Shield</span><span><span id="enemy-shield" class="shield-val">0</span> / <span id="enemy-max-shield" class="shield-val">0</span></span>
-          </div>
-        </div>
-      </div>
-      <!-- Equipment row — synced side by side -->
-      <div class="combat-grid">
-        <div class="player-box p-box">
-          <div class="eq-stack">
+          <div class="eq-stack eq-sync">
             <div class="eq-row"><span class="eq-icon">🛡️</span><span id="p-armor-slot" class="eq-slot">—</span></div>
             <div class="eq-row"><span class="eq-icon">⚔️</span><span id="p-weapon-slot" class="eq-slot">—</span></div>
           </div>
         </div>
         <div class="enemy-box e-box">
-          <div class="eq-stack">
+          <h3 id="enemy-name" class="enemy-name">Searching... <span id="enemy-tag" class="enemy-tag"></span></h3>
+          <div class="stats-body">
+            <div class="bar-container hp-bar">
+              <div id="enemy-hp-bar" class="bar-fill fill hp-fill"></div>
+            </div>
+            <div class="combat-stat">
+              <span>HP</span><span><span id="enemy-hp">0</span> / <span id="enemy-max-hp">0</span></span>
+            </div>
+            <div class="bar-container hp-bar bar-gap bar-shield">
+              <div id="enemy-shield-bar" class="bar-fill fill bar-shield-fill"></div>
+            </div>
+            <div class="combat-stat">
+              <span class="shield-val">Shield</span><span><span id="enemy-shield" class="shield-val">0</span> / <span id="enemy-max-shield" class="shield-val">0</span></span>
+            </div>
+          </div>
+          <div class="eq-stack eq-sync">
             <div class="eq-row"><span class="eq-icon">🛡️</span><span id="e-armor-slot" class="eq-slot">—</span></div>
             <div class="eq-row"><span class="eq-icon">⚔️</span><span id="e-weapon-slot" class="eq-slot">—</span></div>
           </div>
@@ -230,11 +227,17 @@
         <label for="auto-equip-toggle" style="cursor:pointer;">Auto-Equip Best Gear</label>
         <div class="inv-sort">
           <span>Sort:</span>
-          <select id="inv-sort-select" data-action="setSortPreference">
-            <option value="name">Name</option>
-            <option value="amount">Amount</option>
-            <option value="tier">Tier</option>
-          </select>
+          <div class="cyber-dropdown" id="inv-sort-dropdown">
+            <div class="cyber-dropdown-trigger" tabindex="0">
+              <span class="cyber-dropdown-value" data-value="name">NAME</span>
+              <span class="cyber-dropdown-arrow">▼</span>
+            </div>
+            <div class="cyber-dropdown-menu">
+              <div class="cyber-dropdown-option" data-value="name">NAME</div>
+              <div class="cyber-dropdown-option" data-value="amount">AMOUNT</div>
+              <div class="cyber-dropdown-option" data-value="tier">TIER</div>
+            </div>
+          </div>
         </div>
       </div>
       <div id="inv-equipment" class="inv-section"><h3 class="inv-header-suit">⚔️ Equipment</h3><div class="inventory-grid" id="inv-grid-equipment"></div></div>

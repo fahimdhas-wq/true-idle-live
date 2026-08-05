@@ -9,8 +9,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index-OTINoJgr.js"></script>
-  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-DHVTHK6i.css">
+  <script type="module" crossorigin src="/true-idle-live/assets/index-C28PAHeZ.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-DzQ0g0ii.css">
 </head>
 <body>
   <div class="ambient-glow"></div>
@@ -61,36 +61,36 @@
       <div class="panel-header">
         <span class="panel-icon">⚔️</span>
         <span class="panel-title">Combat</span>
-        <span class="panel-level" id="combat-header-info">Stage 1</span>
+        <span class="panel-level" id="combat-header-info">Floor 1</span>
       </div>
-      <div class="stage-controls stage-controls-combat ops-panel">
+      <div class="floor-controls floor-controls-combat ops-panel">
         <div class="ops-readout">
-          <button class="ops-nav ops-nav-left" type="button" data-action="stageNav:-1" aria-label="Previous stage" title="Previous stage">◀</button>
-          <span class="ops-number" id="stage-select-value">1</span>
-          <button class="ops-nav ops-nav-right" type="button" data-action="stageNav:1" aria-label="Next stage" title="Next stage">▶</button>
-          <div class="stage-select" id="stage-select">
-            <button class="stage-select-trigger" id="stage-select-trigger" type="button" data-action="toggleStageSelect" aria-label="Select stage" title="Select stage">
-              <span class="stage-select-arrow" id="stage-select-arrow">▼</span>
+          <button class="ops-nav ops-nav-left" type="button" data-action="floorNav:-1" aria-label="Previous floor" title="Previous floor">◀</button>
+          <button class="ops-number" id="floor-select-value" type="button" data-action="toggleFloorSelect" aria-label="Select floor" title="Select floor">1</button>
+          <button class="ops-nav ops-nav-right" type="button" data-action="floorNav:1" aria-label="Next floor" title="Next floor">▶</button>
+          <div class="floor-select" id="floor-select">
+            <button class="floor-select-trigger" id="floor-select-trigger" type="button" data-action="toggleFloorSelect" aria-label="Select floor" title="Select floor">
+              <span class="floor-select-arrow" id="floor-select-arrow">▼</span>
             </button>
-            <div class="stage-select-panel" id="stage-select-panel">
-              <input class="stage-select-search" id="stage-select-search" type="text" inputmode="numeric" placeholder="Search stage #" data-action="filterStageSelect" data-action-keydown="selectStageOnEnter">
-              <div class="stage-select-list" id="stage-select-list"></div>
+            <div class="floor-select-panel" id="floor-select-panel">
+              <input class="floor-select-search" id="floor-select-search" type="text" inputmode="numeric" placeholder="Search floor #" data-action="filterFloorSelect" data-action-keydown="selectFloorOnEnter">
+              <div class="floor-select-list" id="floor-select-list"></div>
             </div>
           </div>
         </div>
-        <label class="stage-toggle ops-auto">
-          <span class="stage-toggle-text ops-auto-label">AUTO</span>
+        <label class="floor-toggle ops-auto">
+          <span class="floor-toggle-text ops-auto-label">AUTO</span>
           <input type="checkbox" id="auto-advance-toggle" checked data-action="toggleAutoAdvance">
-          <span class="stage-toggle-track ops-auto-track">
-            <span class="stage-toggle-thumb ops-auto-thumb"></span>
+          <span class="floor-toggle-track ops-auto-track">
+            <span class="floor-toggle-thumb ops-auto-thumb"></span>
           </span>
-          <span class="stage-toggle-state ops-auto-state" id="auto-advance-state">ON</span>
+          <span class="floor-toggle-state ops-auto-state" id="auto-advance-state">ON</span>
         </label>
         <span class="ops-corner-tl"></span>
         <span class="ops-corner-bl"></span>
       </div>
       <div id="wave-counter" class="wave-counter">
-        <span class="wc-label">Stage Monsters</span>
+        <span class="wc-label">Floor Monsters</span>
         <span class="wc-count">0</span>
         <div class="wc-bar"><span class="wc-fill"></span></div>
         <span class="wc-text">0/0</span>
@@ -402,7 +402,7 @@
     <!-- ═══ FOOTER ═══ -->
     <div class="text-center game-footer">
       <div class="game-footer-title">True IDLE — Black Iron</div>
-      <div class="game-footer-sub">10 Skills · 100 Stages · Endless Progression</div>
+      <div class="game-footer-sub">10 Skills · 100 Floors · Endless Progression</div>
       <div class="game-footer-actions">
         <button data-action="saveNow" class="btn-reset btn-save">Save</button>
         <button data-action="confirmReset" class="btn-reset btn-wipe">Wipe</button>

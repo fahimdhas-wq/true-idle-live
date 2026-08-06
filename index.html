@@ -9,8 +9,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index-CkBEWmWB.js"></script>
-  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-DzQ0g0ii.css">
+  <script type="module" crossorigin src="/true-idle-live/assets/index-COcOfgjR.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-CvP_a_cm.css">
 </head>
 <body>
   <div class="ambient-glow"></div>
@@ -95,6 +95,10 @@
         <div class="wc-bar"><span class="wc-fill"></span></div>
         <span class="wc-text">0/0</span>
       </div>
+      <div class="floor-timer" id="floor-timer-bar">
+        <span class="floor-timer-fill" id="floor-timer-fill"></span>
+        <span class="floor-timer-text" id="floor-timer-text">--:--</span>
+      </div>
       <div class="combat-grid">
         <div class="player-box p-box">
           <h3>
@@ -148,8 +152,9 @@
             <div class="eq-row"><span class="eq-icon">⚔️</span><span id="e-weapon-slot" class="eq-slot">—</span></div>
           </div>
         </div>
+        <span class="vs-emblem" aria-hidden="true"><span>VS</span></span>
       </div>
-      <div id="combat-beasts-panel" class="combat-summon-panel">
+      <div id="combat-beasts-panel" class="combat-summon-panel beast-panel">
         <div class="card-header">Active Beasts</div>
         <div id="combat-beasts-list" class="summon-list"></div>
       </div>

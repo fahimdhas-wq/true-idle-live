@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>True IDLE — Persistent Browser RPG</title>
-  <meta name="description" content="True IDLE is a persistent browser-based idle RPG with 10 skill systems: Mining, Farming, Smithing, Herblore, Enchanting, Slayer, Beast Taming, Necromancy, Sanctified Arts, and Player Combat. Forge gear, fight through 100 dungeon floors, and progress offline.">
+  <meta name="description" content="True IDLE is a persistent browser-based idle RPG with 10 skill systems: Mining, Farming, Smithing, Herblore, Training, Slayer, Beast Taming, Necromancy, Sanctified Arts, and Player Combat. Forge gear, fight through 100 dungeon floors, and progress offline.">
   <meta name="theme-color" content="#07090f">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index-DfenPZZG.js"></script>
-  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-DUONBQtY.css">
+  <script type="module" crossorigin src="/true-idle-live/assets/index--rHc8ec1.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-DmcZaCHl.css">
 </head>
 <body>
   <div class="ambient-glow"></div>
@@ -39,7 +39,7 @@
     <nav id="main-nav">
       <button data-action="switchTab:main" id="btn-main" class="active">Combat</button>
       <button data-action="switchTab:stats" id="btn-stats">Stats</button>
-      <button data-action="switchTab:enchant" id="btn-enchant">Enchant</button>
+      <button data-action="switchTab:training" id="btn-training">Training</button>
       <button data-action="switchTab:farming" id="btn-farming">Farming</button>
       <button data-action="switchTab:mining" id="btn-mining">Mining</button>
       <button data-action="switchTab:smithing" id="btn-smithing">Smithing</button>
@@ -249,15 +249,15 @@
       <div id="inv-other" class="inv-section"><h3 class="inv-header-other">🔹 Other</h3><div class="inventory-grid" id="inv-grid-other"></div></div>
     </div>
 
-    <!-- ═══ ENCHANT ═══ -->
-    <div id="tab-enchant" class="panel">
+    <!-- ═══ TRAINING ═══ -->
+    <div id="tab-training" class="panel">
       <div class="panel-header">
         <span class="panel-icon">✨</span>
-        <span class="panel-title">Enchanting</span>
-        <span class="panel-level" id="enchant-header-info">LVL <span id="enchant-lvl-display">1</span></span>
+        <span class="panel-title">Training</span>
+        <span class="panel-level" id="training-header-info">LVL <span id="training-lvl-display">1</span></span>
       </div>
-      <div id="enchant-slots-container"></div>
-      <div id="enchant-list" data-enchant-cat="sword"></div>
+      <div id="training-slots-container"></div>
+      <div id="training-list" data-training-cat="sword"></div>
     </div>
 
     <!-- ═══ PROFESSIONS ═══ -->
@@ -278,17 +278,17 @@
         <span class="panel-title">Collection</span>
         <span class="panel-level" id="collection-header-info">Journal</span>
       </div>
-      <div class="enchant-sub-nav" id="collection-sub-nav">
-        <button class="enchant-sub-btn active" data-testid="col-cat-herbs" data-action="switchCollectionTab:herbs" id="btn-col-herbs">🌿 Herbs</button>
-        <button class="enchant-sub-btn" data-testid="col-cat-ores" data-action="switchCollectionTab:ores" id="btn-col-ores">⛏ Ores</button>
-        <button class="enchant-sub-btn" data-testid="col-cat-potions" data-action="switchCollectionTab:potions" id="btn-col-potions">⚗ Potions</button>
-        <button class="enchant-sub-btn" data-testid="col-cat-drops" data-action="switchCollectionTab:drops" id="btn-col-drops">📦 Drops</button>
-        <button class="enchant-sub-btn" data-testid="col-cat-beasts" data-action="switchCollectionTab:beasts" id="btn-col-beasts">🐾 Beasts</button>
-        <button class="enchant-sub-btn" data-testid="col-cat-necro" data-action="switchCollectionTab:necro" id="btn-col-necro">💀 Necro</button>
-        <button class="enchant-sub-btn" data-testid="col-cat-enchants" data-action="switchCollectionTab:enchants" id="btn-col-enchants">✨ Enchants</button>
-        <button class="enchant-sub-btn" data-testid="col-cat-smithing" data-action="switchCollectionTab:smithing" id="btn-col-smithing">🔨 Smithing</button>
-        <button class="enchant-sub-btn" data-testid="col-cat-mobs" data-action="switchCollectionTab:mobs" id="btn-col-mobs">👹 Mobs</button>
-        <button class="enchant-sub-btn" data-testid="col-cat-bosses" data-action="switchCollectionTab:bosses" id="btn-col-bosses">👑 Bosses</button>
+      <div class="cat-sub-nav" id="collection-sub-nav">
+        <button class="cat-sub-btn active" data-testid="col-cat-herbs" data-action="switchCollectionTab:herbs" id="btn-col-herbs">🌿 Herbs</button>
+        <button class="cat-sub-btn" data-testid="col-cat-ores" data-action="switchCollectionTab:ores" id="btn-col-ores">⛏ Ores</button>
+        <button class="cat-sub-btn" data-testid="col-cat-potions" data-action="switchCollectionTab:potions" id="btn-col-potions">⚗ Potions</button>
+        <button class="cat-sub-btn" data-testid="col-cat-drops" data-action="switchCollectionTab:drops" id="btn-col-drops">📦 Drops</button>
+        <button class="cat-sub-btn" data-testid="col-cat-beasts" data-action="switchCollectionTab:beasts" id="btn-col-beasts">🐾 Beasts</button>
+        <button class="cat-sub-btn" data-testid="col-cat-necro" data-action="switchCollectionTab:necro" id="btn-col-necro">💀 Necro</button>
+        <button class="cat-sub-btn" data-testid="col-cat-trainings" data-action="switchCollectionTab:trainings" id="btn-col-trainings">✨ Trainings</button>
+        <button class="cat-sub-btn" data-testid="col-cat-smithing" data-action="switchCollectionTab:smithing" id="btn-col-smithing">🔨 Smithing</button>
+        <button class="cat-sub-btn" data-testid="col-cat-mobs" data-action="switchCollectionTab:mobs" id="btn-col-mobs">👹 Mobs</button>
+        <button class="cat-sub-btn" data-testid="col-cat-bosses" data-action="switchCollectionTab:bosses" id="btn-col-bosses">👑 Bosses</button>
       </div>
       <div id="view-collection" class="collection-view active"></div>
     </div>

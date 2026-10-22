@@ -9,8 +9,8 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⚔️</text></svg>">
-  <script type="module" crossorigin src="/true-idle-live/assets/index--rHc8ec1.js"></script>
-  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-DmcZaCHl.css">
+  <script type="module" crossorigin src="/true-idle-live/assets/index-BNFXqm0K.js"></script>
+  <link rel="stylesheet" crossorigin href="/true-idle-live/assets/index-DbHYTXb6.css">
 </head>
 <body>
   <div class="ambient-glow"></div>
@@ -256,8 +256,20 @@
         <span class="panel-title">Training</span>
         <span class="panel-level" id="training-header-info">LVL <span id="training-lvl-display">1</span></span>
       </div>
-      <div id="training-slots-container"></div>
-      <div id="training-list" data-training-cat="sword"></div>
+
+      <!-- Sticky HUD: XP, talent points, growth snapshots, death reward -->
+      <div id="training-hud" class="training-hud"></div>
+
+      <!-- Sub-tabs: Talent Tree / Upgrades / Live Feed -->
+      <div class="training-tabs" id="training-tabs" data-training-tab="tree">
+        <button class="training-tab-btn active" data-training-tab-btn="tree" data-action="switchTrainingTab:tree">🌳 Talent Tree</button>
+        <button class="training-tab-btn" data-training-tab-btn="upgrades" data-action="switchTrainingTab:upgrades">⬆️ Upgrades</button>
+        <button class="training-tab-btn" data-training-tab-btn="feed" data-action="switchTrainingTab:feed">📡 Live Feed</button>
+      </div>
+
+      <div id="training-tree" class="training-tab-body active"></div>
+      <div id="training-tiers" class="training-tab-body"></div>
+      <div id="training-feed" class="training-tab-body"></div>
     </div>
 
     <!-- ═══ PROFESSIONS ═══ -->
